@@ -8,7 +8,7 @@ uint32_t reemplazar_byte (uint32_t t, int n, uint8_t b)
     uint32_t mask1 = (uint32_t)b << (n << 3);       // Acomodamos el byte b desplazandolo n*8 bits a la izquierda.
     uint32_t mask2 = ~((uint32_t)0xff << (n << 3)); // Todos los bits, menos el byte correspondiente a b, con unos.
     
-    t = t & mask2; // Anulamos los bits correspondientes al byte que queremos cambiar
+    t = t & mask2; // Anulamos los bits correspondientes al byte que queremos cambiar.
     t = t | mask1; // Este or bit a bit nos permite dejar todos los bits 1 como estaban, y el espacio vacío con el byte b.
   
     return t;
@@ -27,7 +27,7 @@ uint32_t leftmost_one (uint32_t dword)
         return 0x80000000;   // próxima linea donde lo desplazamos, así que directamente devolvemos el valor correspondiente.
     }
 
-    return (dword + 1) >> 1; // Con la suma dejamos el 1 deseado a la izquierda, y lo desplazamos 
+    return (dword + 1) >> 1; // Con la suma dejamos el 1 deseado a la izquierda, y lo desplazamos.
 }
 
 void tests()
@@ -36,7 +36,7 @@ void tests()
     if (reemplazar_byte(0xb00710ad, 0, 0x07) == 0xb0071007) printf("OK TEST 2\n");
     if (reemplazar_byte(0xcafecafe, 3, 0xca) == 0xcafecafe) printf("OK TEST 3\n");
 
-    if (leftmost_one(0xefffffff) == 0x80000000) printf("OK TEST 4\n");
+    if (leftmost_one(0xefffffff) == 0x80000000) printf("OK TEST 4\n"); // Los tests funcionan ya que operan bit a bit.
     if (leftmost_one(0x8fffffff) == 0x80000000) printf("OK TEST 5\n"); 
     if (leftmost_one(0xff00) == 0x8000) printf("OK TEST 6\n");
     if (leftmost_one(0x6600) == 0x4000) printf("OK TEST 7\n");
