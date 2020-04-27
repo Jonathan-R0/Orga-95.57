@@ -27,8 +27,8 @@ uint32_t leftmost_one (uint32_t dword)
         return 0x80000000;   // próxima linea donde lo desplazamos, así que directamente devolvemos el valor correspondiente.
     }
 
-    return (dword + 1) >> 1; // Con la suma dejamos el 1 deseado a la izquierda, y lo desplazamos.
-}
+    return (dword >> 1) + !!dword; // Con la suma dejamos el 1 deseado a la izquierda, y lo desplazamos.
+}                                  // La doble exclamación está para evitar el caso borde de 0x00
 
 void tests()
 {
