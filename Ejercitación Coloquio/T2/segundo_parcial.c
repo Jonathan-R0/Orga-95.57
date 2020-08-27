@@ -7,7 +7,7 @@
 //void equals(char* msj, const void* x, const void* y, bool(*test)(const void* a, const void* b));
 
 //---------------------------------------------------------------
-
+/*
 struct a{int n;};
 struct mini{char c; short s;};
 typedef struct p1{short i; int c; int *j; short *d;}ej;
@@ -18,9 +18,9 @@ void ejs_libro(){
 	printf("Offsets: \ni: %ld, c: %ld, j: %ld, d: %ld\n",offsetof(ej,i),offsetof(ej,c),offsetof(ej,j),offsetof(ej,d));
 	printf("Struct mini total size: %ld & offsets: c: %ld, s: %ld\n",sizeof(struct mini),offsetof(struct mini,c),offsetof(struct mini,s));
 }
-
+*/
 // 4A -----------------------------------------------------------
-
+/*
 typedef struct primero {long l; char c; int  i;} a;
 typedef struct segundo {int  i; long l; char c; int j;} b;
 typedef struct tercero {int  i; long l; char c;} c;
@@ -33,14 +33,15 @@ void ej_4a(){
 	printf(MSJSIZES" i: %ld, l: %ld, c: %ld\n","c",sizeof(c),sizeof(c)-sizeof(char)-offsetof(c,c),offsetof(c,i),offsetof(c,l),offsetof(c,c));
 
 }
+*/
 
 // 4C -----------------------------------------------------------
 
       /* %RDI v | %RSI v */
-short f(short a, short b){
-	short result = 0;
+int nf(int a, int b){
+	int result = 0;
 	while (a > b){
-		result = result + a * b;
+		result = result + a + b;
 		a = a - 1;
 	}
 	return result;
@@ -63,8 +64,9 @@ short f(short a, short b){
 // 4C -----------------------------------------------------------
 
     /* %RDI v | %RSI v */
-long g(long a,  long b){
+long ng(long a,  long b){
 	long result = b;
+	printf("oh shid");
 	while (b > 0){
 		result = result * a;
 		b = b - a;
@@ -87,3 +89,28 @@ long g(long a,  long b){
 26    movq %rsi, %rax
 27    ret
 */
+
+
+short f(short a, short b);
+long g(long a,  long b);
+
+int main(void){
+
+	/*for (short i = -5; i < 6; i++){
+		for (short j = -5; j < 6; j++){
+			printf("nf: %d , f: %d\n",nf(i,j),f(i,j));
+		}
+	}*/
+
+	for (short i = -5; i < 6; i++){
+		for (short j = -5; j < 6; j++){
+			printf("ng: %ld , g: %ld\n",ng(i,j),g(i,j));
+		}
+	}
+
+	short f1 = f(1,2);
+	long  g1 = g(1,2);
+	
+	return (0*f1*g1);
+}
+
