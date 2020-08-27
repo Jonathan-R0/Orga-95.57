@@ -1,6 +1,6 @@
 CFLAGS = -g -std=c99 -Wall -Wconversion -Wno-sign-conversion -Werror 
 EXEC = exe 
-OBJ = len.o
+OBJ = len.o cmp.o
 CC = gcc
 
 all: $(EXEC)
@@ -8,8 +8,11 @@ all: $(EXEC)
 len.o: len.S
 	$(CC) $(CFLAGS) -c len.S
 
-$(EXEC): $(OBJ) my_strlen.c
-	$(CC) $(CFLAGS) $(OBJ) my_strlen.c -o $(EXEC)
+cmp.o: cmp.S
+	$(CC) $(CFLAGS) -c cmp.S
+
+$(EXEC): $(OBJ) test.c
+	$(CC) $(CFLAGS) $(OBJ) test.c -o $(EXEC)
 
 clean:
 	rm $(EXEC) $(OBJ)

@@ -2,15 +2,13 @@
 
 my_strlen:
 	xorq %rax,%rax
-	xorq %rbx,%rbx
-	
-	cmpq $0,%rax	
+	cmpb $0,(%rdi)
 	jne .L1
-	
 	ret
-
+.L2:
+	incq %rax
+	incq %rdi
 .L1:
-	incq %rbx
-	cmpq $0,%rax
-	jne .L1
+	cmpb $0,(%rdi)
+	jne .L2
 	ret
