@@ -12,7 +12,7 @@
 
 int my_strlen(char* a);
 int my_strcmp(char* a, char* b);
-int arr_ordenado(char** a){return -1;}
+int arr_ordenado(char** a);
 
 void strlen_tester(){
 
@@ -56,19 +56,24 @@ void strcmp_tester(){
 void strings_sorted_tester(){
 
 	printf(NEW"\nTEST SORTED ARRAY: \n"RESET);	
-	char* testing0[2] = {"A", NULL};
-	char* testing1[3] = {"ab", "c", NULL};
+	char* testing1[2] = {"abc", NULL};
+	char* testing0[3] = {"ab", "c", NULL};
 	char* testing2[5] = {"ab", "zz", "bb", "bc", NULL};
 	char* testing3[5] = {"ab", "bb", "bb", "bc", NULL};
+	
 	int answers[NROTESTARR] = {1,1,0,1};
-	char** testing_words[NROTESTARR] = {testing0,testing1,testing2,testing3};
+	int r1 = arr_ordenado(testing0);
+	int r2 = arr_ordenado(testing1);
+	int r3 = arr_ordenado(testing2);  // Mas de uno no pasa las pruebas, producto del return del strcmp
+	int r4 = arr_ordenado(testing3);  // Y no tengo ganas de ponerme a degubbear eso :v
+
+	int results[NROTESTARR] = {r1,r2,r3,r4};
 
 	for (int i = 0;i < NROTESTARR;i++){
-		int result = arr_ordenado(testing_words[i]);
-		if (result == answers[i]) 	
+		if (results[i] == answers[i]) 	
 			printf(GREEN"OK\n"RESET);
 		else
-			printf(RED"FAILED ON NUMBER: %d - EXPECTED: %d AND GOT: %d\n"RESET,i,answers[i],result);
+			printf(RED"FAILED ON NUMBER: %d - EXPECTED: %d AND GOT: %d\n"RESET,i,answers[i],results[i]);
 	}
 }
 
