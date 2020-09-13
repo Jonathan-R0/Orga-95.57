@@ -1,8 +1,8 @@
 .globl my_strcmp
 
-# A -> %RDI
-# B -> %RSI
-# strlen(A) -> %RBX
+/* A -> %RDI */
+/* A  B -> %RSI */
+/* A  strlen(A) -> %RBX */
 
 my_strcmp:
 	
