@@ -1,6 +1,6 @@
 ma: # ¡CORRECTA! :]
     movq %rdx, %r9     // %r9 ← n
-    leaq -1(%rdx), %r8 # %r8 ← n-1 = i
+    leaq -1(%rdx), %r8 // %r8 ← n-1 = i
     jmp .L2
 .L3:
     movq %r8, %rdx  # %rdx ← i
