@@ -5,7 +5,7 @@ ma: # ¡CORRECTA! :]
 .L3:
     movq %r8, %rdx  # %rdx ← i
     subq %rcx, %rdx # %rdx ← i-j
-    addq (%rdi,%rdx,8), %rax # %rax ← v[i-j] (como nos movemos 8*(i-j) bytes, saltamos i-j longs)
+    addq (%rdi,%rdx,8), %rax /* %rax ← v[i-j] (como nos movemos 8*(i-j) bytes, saltamos i-j longs) */
     addq $1, %rcx   # %rcx ← j++
     jmp .L4
 .L5:
