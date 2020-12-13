@@ -3,10 +3,10 @@ extern unsigned long casos_diarios[512];
 // La llamada inicial para el ejercicio de caché es: ma(casos_diarios,512,8);
 
 /*
- Sabiendo que cada bloque de la caché puede guardar 4 longs, ocurrirá que se producirá un miss de lectura en cada primera lectura 
- del ciclo interno y para cuando estemos en la parte de la escritura, el último long cacheado será el que tenemos que escribir. 
- Miss rate de lectura = 25% (2 de cada 8).
- Miss rate de escrituras = 0%.
+ Sabiendo que cada bloque de la caché puede guardar 4 longs, se producirá un miss de lectura en cada primera lectura del
+ ciclo interno y para cuando estemos en la parte de la escritura, el último long cacheado será el que tenemos que escribir. 
+ -> Miss rate de lectura = 25% (2 de cada 8).
+ -> Miss rate de escrituras = 0%.
 */
 
 unsigned long ma(unsigned long *v, unsigned long i, unsigned long n){
